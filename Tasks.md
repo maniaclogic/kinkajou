@@ -3,8 +3,9 @@
 1) Setup Kivy ✔
 2) Setup DB and tables ✔
    - Levels table with attributes: [level, max, counter] ✔
-3) Write add value option to app and insert to vocab table
-   - Values table with attributes: [value, answer, written, level=0]
+3) Write add value option to app and insert to vocab table ✔
+   - Values table with attributes: [value, answer, written, level=0] ✔
+- Clear form after save
 4) Create value class from DB
 5) Display card on screen with value
 6) On click display answer (flip animation would be cool)

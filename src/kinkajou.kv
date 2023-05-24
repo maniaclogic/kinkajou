@@ -1,11 +1,46 @@
 #:kivy 1.0.9
 
-<Kinkajou>:
-    canvas:
-        Rectangle:
-            pos: self.center_x - 400, self.center_y - 250
-            size: 800, 500
+<AddForm>:
+    orientation: 'vertical'
+    padding: 50
+    Label:
+        text: "Value:"
+    TextInput:
+        size_hint: (1, None)
+        height: 100
+        multiline: False
+        text: root.data['value'] if 'value' in root.data else ''
+        on_text: root.data['value'] = self.text
+    Label:
+        text: "Answer:"
+    TextInput:
+        size_hint: (1, None)
+        height: 100
+        multiline: False
+        text: root.data['answer'] if 'answer' in root.data else ''
+        on_text: root.data['answer'] = self.text
+    Label:
+        text: "Written:"
+    TextInput:
+        size_hint: (1, None)
+        height: 100
+        multiline: False
+        text: root.data['written'] if 'written' in root.data else ''
+        on_text: root.data['written'] = self.text
 
+    Button:
+        background_normal: ''
+        background_color: 0.082, 0.671, 0.553, 1
+        height: "40dp"
+        size_hint_y: None
+        text: "Save"
+        on_press: root.dispatch('on_save', root.data)
+
+#    canvas:
+#        Rectangle:
+#            pos: self.center_x - 400, self.center_y - 250
+#            size: 800, 500
+#
 #    Label:
 #        font_size: 70
 #        center_x: root.width / 4

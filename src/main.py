@@ -1,15 +1,12 @@
 from kivy.app import App
-from kivy.uix.label import Label
-from kivy.uix.widget import Widget
-
-
-class Kinkajou(Widget):
-    pass
+from add_form import AddForm
+from db import setup_db
 
 
 class KinkajouApp(App):
     def build(self):
-        return Kinkajou()
+        setup_db()
+        return AddForm()
 
 
 if __name__ == '__main__':
