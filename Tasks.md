@@ -1,4 +1,4 @@
-Added project https://github.com/users/maniaclogic/projects/1/views/1
+Project board https://github.com/users/maniaclogic/projects/1/views/1
 
 # Tasks
 
