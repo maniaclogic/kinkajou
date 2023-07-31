@@ -18,4 +18,16 @@
    2) when level is empty set current_level to 1st level again
    3) Randomly select 10 new values from DB
    4) Throw error when not enough values to continue game
-10) Implement token to support several users
+10) Add achievements (for fun!)
+   1) Add daily mission of 30 new vocab
+   2) Add counter == how many vocab practiced today
+   3) How many vocabulary overall
+   4) How many vocabulary in level 5
+
+Will never happen: 11) Implement token to support several users
+
+## Questions
+
+- How to implement grammar structure?
+     - Add sentence per vocab?
+- How to add listening comprehension?
