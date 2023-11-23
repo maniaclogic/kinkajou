@@ -4,13 +4,13 @@
     orientation: 'vertical'
     padding: 50
     Label:
-        text: "Value:"
+        text: "Word:"
     TextInput:
         size_hint: (1, None)
         height: 100
         multiline: False
-        text: root.data['value'] if 'value' in root.data else ''
-        on_text: root.data['value'] = self.text
+        text: root.data['word'] if 'word' in root.data else ''
+        on_text: root.data['word'] = self.text
     Label:
         text: "Answer:"
     TextInput:
@@ -25,6 +25,7 @@
         size_hint: (1, None)
         height: 100
         multiline: False
+        font_name: 'Arial'
         text: root.data['written'] if 'written' in root.data else ''
         on_text: root.data['written'] = self.text
 

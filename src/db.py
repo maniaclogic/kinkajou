@@ -3,10 +3,9 @@ import sqlite3
 connection = sqlite3.connect("kinkajou.db")
 cursor = connection.cursor()
 
-
 def setup_db(cur=cursor, con=connection):
     try:
-        cur.execute("CREATE TABLE vocab(value PRIMARY KEY, answer, written, level)")
+        cur.execute("CREATE TABLE vocab(word PRIMARY KEY, answer, written, level)")
         cur.execute("CREATE TABLE levels(level PRIMARY KEY, max, counter)")
     except sqlite3.OperationalError:
         print("Table already exists")
@@ -17,11 +16,14 @@ def setup_db(cur=cursor, con=connection):
         print("Levels are set up")
 
 
-def insert_values(value, answer, written, cur=cursor, con=connection):
-    cur.execute(f'INSERT INTO vocab VALUES ("{value}","{answer}","{written}",0)')
+def insert_words(word, answer, written, cur=cursor, con=connection):
+    cur.execute(f'INSERT INTO vocab VALUES ("{word}","{answer}","{written}",0)')
     con.commit()
 
+# For debugging run python db.py
+if __name__ == '__main__':
+    vocab = cursor.execute("SELECT * FROM vocab")
+    print("Vocab: ", vocab.fetchall())
 
-res = cursor.execute("SELECT * FROM vocab")
-
-print(res.fetchall())
+    levels = cursor.execute("SELECT * FROM levels")
+    print("Levels: ", levels.fetchall())

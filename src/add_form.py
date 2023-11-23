@@ -1,7 +1,7 @@
 from kivy.properties import DictProperty
 from kivy.uix.boxlayout import BoxLayout
 
-from db import insert_values
+from db import insert_words
 
 
 class AddForm(BoxLayout):
@@ -16,4 +16,4 @@ class AddForm(BoxLayout):
             self.data = {}
 
     def on_save(self, data):
-        insert_values(data['value'], data['answer'], data['written'])
+        insert_words(data['word'], data['answer'], data['written'])
