@@ -6,6 +6,7 @@
     Label:
         text: "Word:"
     TextInput:
+        id: word_input
         size_hint: (1, None)
         height: 100
         multiline: False
@@ -14,6 +15,7 @@
     Label:
         text: "Answer:"
     TextInput:
+        id: answer_input
         size_hint: (1, None)
         height: 100
         multiline: False
@@ -22,6 +24,7 @@
     Label:
         text: "Written:"
     TextInput:
+        id: written_input
         size_hint: (1, None)
         height: 100
         multiline: False
@@ -35,7 +38,7 @@
         height: "40dp"
         size_hint_y: None
         text: "Save"
-        on_press: root.dispatch('on_save', root.data)
+        on_press: root.dispatch('on_save', root.data);
 
 #    canvas:
 #        Rectangle:

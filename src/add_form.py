@@ -15,5 +15,10 @@ class AddForm(BoxLayout):
         else:
             self.data = {}
 
+    def clear_input(self):
+        for value in self.ids.values():
+            value.text = ""
+
     def on_save(self, data):
         insert_words(data['word'], data['answer'], data['written'])
+        self.clear_input()

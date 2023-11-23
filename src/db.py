@@ -17,6 +17,7 @@ def setup_db(cur=cursor, con=connection):
 
 
 def insert_words(word, answer, written, cur=cursor, con=connection):
+    print(f'Inserting into vocab ("{word}","{answer}","{written}",0)')
     cur.execute(f'INSERT INTO vocab VALUES ("{word}","{answer}","{written}",0)')
     con.commit()
 
