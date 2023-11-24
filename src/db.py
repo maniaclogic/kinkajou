@@ -1,4 +1,5 @@
 import sqlite3
+from card import Card
 
 connection = sqlite3.connect("kinkajou.db")
 cursor = connection.cursor()
@@ -15,16 +16,24 @@ def setup_db(cur=cursor, con=connection):
     except sqlite3.IntegrityError:
         print("Levels are set up")
 
-
 def insert_words(word, answer, written, cur=cursor, con=connection):
     print(f'Inserting into vocab ("{word}","{answer}","{written}",0)')
     cur.execute(f'INSERT INTO vocab VALUES ("{word}","{answer}","{written}",0)')
     con.commit()
 
+def select_cards(level, count):
+    cur = connection.cursor()
+    cur.row_factory = lambda _, row: Card(*row)
+    return cur.execute(f"SELECT * FROM vocab WHERE level = {level} LIMIT {count}").fetchall()
+
 # For debugging run python db.py
 if __name__ == '__main__':
+
     vocab = cursor.execute("SELECT * FROM vocab")
     print("Vocab: ", vocab.fetchall())
 
     levels = cursor.execute("SELECT * FROM levels")
     print("Levels: ", levels.fetchall())
+
+    cards = select_cards(0, 2)
+    print(cards)

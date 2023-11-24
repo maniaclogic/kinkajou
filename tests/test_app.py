@@ -1,6 +1,6 @@
-from src.main import Kinkajou
+from src.main import KinkajouApp
 import kivy.app as kivy_app
 
 
 def test_kivy_app_exists():
-    assert isinstance(Kinkajou(), kivy_app.App)
+    assert isinstance(KinkajouApp(), kivy_app.App)

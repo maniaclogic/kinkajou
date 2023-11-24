@@ -1,7 +1,7 @@
 from kivy.properties import DictProperty
 from kivy.uix.screenmanager import Screen
 
-import db
+from db import insert_words
 
 class AdminWindow(Screen):
     data = DictProperty({})
@@ -27,7 +27,7 @@ class AdminWindow(Screen):
     def on_save(self, data):
         print(data)
         if self.validate_input(data):
-            db.insert_words(data['word'], data['answer'], data['written'])
+            insert_words(data['word'], data['answer'], data['written'])
         else:
             print("Validation Error")
         self.clear_input()

@@ -67,24 +67,23 @@ WindowManager:
         padding: 100
         
         Button:
+            text: "Pick word"
+            on_press: root.dispatch('on_pick_word', root.data);
+
+        Label:
+            text: "Word:"
+        TextInput:
+            id: word_display
+            size_hint: (1, None)
+            height: 100
+            multiline: False
+            write_tab: False
+            font_name: 'Arial'
+            editable: False
+            text: ''
+
+        Button:
             text: "Go Back"
             on_release:
                 app.root.current = "admin"
                 root.manager.transition.direction = "down"
-
-#    canvas:
-#        Rectangle:
-#            pos: self.center_x - 400, self.center_y - 250
-#            size: 800, 500
-#
-#    Label:
-#        font_size: 70
-#        center_x: root.width / 4
-#        top: root.top - 50
-#        text: "0"
-#
-#    Label:
-#        font_size: 70
-#        center_x: root.width * 3 / 4
-#        top: root.top - 50
-#        text: "0"
