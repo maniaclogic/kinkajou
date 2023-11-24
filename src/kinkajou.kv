@@ -1,44 +1,76 @@
 #:kivy 1.0.9
 
-<AddForm>:
-    orientation: 'vertical'
-    padding: 50
-    Label:
-        text: "Word:"
-    TextInput:
-        id: word_input
-        size_hint: (1, None)
-        height: 100
-        multiline: False
-        text: root.data['word'] if 'word' in root.data else ''
-        on_text: root.data['word'] = self.text
-    Label:
-        text: "Answer:"
-    TextInput:
-        id: answer_input
-        size_hint: (1, None)
-        height: 100
-        multiline: False
-        text: root.data['answer'] if 'answer' in root.data else ''
-        on_text: root.data['answer'] = self.text
-    Label:
-        text: "Written:"
-    TextInput:
-        id: written_input
-        size_hint: (1, None)
-        height: 100
-        multiline: False
-        font_name: 'Arial'
-        text: root.data['written'] if 'written' in root.data else ''
-        on_text: root.data['written'] = self.text
+WindowManager:
+    AdminWindow:
+    LearnWindow:
 
-    Button:
-        background_normal: ''
-        background_color: 0.082, 0.671, 0.553, 1
-        height: "40dp"
-        size_hint_y: None
-        text: "Save"
-        on_press: root.dispatch('on_save', root.data);
+<AdminWindow>:
+    name: "admin"
+    BoxLayout:
+        orientation: 'vertical'
+        spacing: 20
+        padding: 100
+
+        Button:
+            pos_hint: {"x": 0.8, "top": 0.2}
+            size_hint: 0.2,0.5
+            text: "Learn Now :)"
+            on_release:
+                app.root.current = "learn"
+                root.manager.transition.direction = "up"
+        Label:
+            text: "Word:"
+        TextInput:
+            id: word_input
+            size_hint: (1, None)
+            height: 100
+            multiline: False
+            write_tab: False
+            text: root.data['word'] if 'word' in root.data else ''
+            on_text: root.data['word'] = self.text
+        Label:
+            text: "Answer:"
+        TextInput:
+            id: answer_input
+            size_hint: (1, None)
+            height: 100
+            multiline: False
+            write_tab: False
+            text: root.data['answer'] if 'answer' in root.data else ''
+            on_text: root.data['answer'] = self.text
+        Label:
+            text: "Written:"
+        TextInput:
+            id: written_input
+            size_hint: (1, None)
+            height: 100
+            multiline: False
+            write_tab: False
+            font_name: 'Arial'
+            text: root.data['written'] if 'written' in root.data else ''
+            on_text: root.data['written'] = self.text
+
+        Button:
+            background_normal: ''
+            background_color: 0.082, 0.671, 0.553, 1
+            height: "40dp"
+            size_hint_y: None
+            text: "Save"
+            on_press: root.dispatch('on_save', root.data);
+        
+
+<LearnWindow>:
+    name: "learn"
+    BoxLayout:
+        orientation: 'vertical'
+        spacing: 20
+        padding: 100
+        
+        Button:
+            text: "Go Back"
+            on_release:
+                app.root.current = "admin"
+                root.manager.transition.direction = "down"
 
 #    canvas:
 #        Rectangle:
